@@ -3,6 +3,13 @@
 
 
 
+# Instruction
+1. Download datasets
+
+```
+bash download_datasets.sh
+```
+
 
 
 
