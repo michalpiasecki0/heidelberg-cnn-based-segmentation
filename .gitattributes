@@ -1,1 +1,4 @@
 datasets/*.zip filter=lfs diff=lfs merge=lfs -text
+datasets/DIC-C2DH-HeLa.zip filter=lfs diff=lfs merge=lfs -text
+datasets/Fluo-N2DL-HeLa.zip filter=lfs diff=lfs merge=lfs -text
+datasets/PhC-C2DH-U373.zip filter=lfs diff=lfs merge=lfs -text
