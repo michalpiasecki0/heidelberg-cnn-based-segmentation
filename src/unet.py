@@ -179,8 +179,8 @@ class UNet2d(nn.Module):
         self,
         input_dim,
         output_dim,
-        encoder_layer=EncoderLayer,
-        decoder_layer=DecoderLayer,
+        encoder_layer=EncoderLayerBN,
+        decoder_layer=DecoderLayerBN,
         hidden_dims=[64, 128, 256, 512, 1024],
         kernel_size=3,
         padding_mode="valid",
@@ -235,8 +235,8 @@ class UNet2d(nn.Module):
             )
 
         # Add last encoder layer
-        ch_in = hidden_dims[i - 1]
-        ch_out = hidden_dims[i]
+        ch_in = hidden_dims[-2]
+        ch_out = hidden_dims[-1]
         encoder.append(
             encoder_layer(
                 ch_in,
