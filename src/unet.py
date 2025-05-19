@@ -43,7 +43,6 @@ class EncoderLayerBN(EncoderLayer):
             ch_in, ch_out, kernel_size, padding, pooling, dropout
         )
 
-        # your code goes here
         self.block = nn.Sequential(
             nn.Conv2d(ch_in, ch_out, kernel_size=kernel_size, padding=padding),
             nn.BatchNorm2d(ch_out),
@@ -165,7 +164,6 @@ class DecoderLayerBN(DecoderLayer):
         elif self.skip_mode == "add" or self.skip_mode == "add":
             ch_hidden = ch_out
 
-        # your code goes here
         self.block = nn.Sequential(
             nn.Conv2d(ch_hidden, ch_out, kernel_size=kernel_size, padding=padding),
             nn.BatchNorm2d(ch_out),
