@@ -15,11 +15,13 @@ class SegmentationDataset(Dataset):
         img_folder: str,
         target_folder: str,
         transform: Callable = None,
+        target_transform: Callable = None
     ):
         self.path: Path = root_path
         self.img_path = self.path / img_folder
         self.target_path = self.path / target_folder
         self.transform = transform
+        self.target_transform = target_transform
         self.images = self._get_sorted_paths(self.img_path)
         self.targets = self._get_sorted_paths(self.target_path)
 
@@ -43,8 +45,11 @@ class SegmentationDataset(Dataset):
 
         # transform target
         target = transforms.ToTensor()(target).to(torch.long)
-        target = (target > 0)  # map instance segmentation to binary segmentation (foreground / background)
+        target = (target > 0).to(torch.float)  # map instance segmentation to binary segmentation (foreground / background)
 
+        if self.target_transform:
+            target = self.target_transform(target)
+            
         return image, target
 
     def __len__(self):
