@@ -1,0 +1,41 @@
+train:
+  _target_: src.datasets.SegmentationDataset
+  root_path:
+    _target_: pathlib.Path
+    _args_:
+      - ${constants.PHC_PATH}
+  img_folder: "01"
+  target_folder: "01_ST/SEG"
+  transform:
+    _target_: torchvision.transforms.Compose
+    transforms:
+      - _target_: torchvision.transforms.ToTensor
+      - _target_: torchvision.transforms.Resize
+        size: [512, 512]
+      - _target_: torchvision.transforms.Normalize
+        mean: ${constants.PHC_MEAN}
+        std: ${constants.PHC_STD}
+  target_transform:
+    _target_: torchvision.transforms.Resize
+    size: [512, 512]
+
+val:
+  _target_: src.datasets.SegmentationDataset
+  root_path:
+    _target_: pathlib.Path
+    _args_:
+      - ${constants.PHC_PATH}
+  img_folder: "02"
+  target_folder: "02_ST/SEG"
+  transform:
+    _target_: torchvision.transforms.Compose
+    transforms:
+      - _target_: torchvision.transforms.ToTensor
+      - _target_: torchvision.transforms.Resize
+        size: [512, 512]
+      - _target_: torchvision.transforms.Normalize
+        mean: ${constants.PHC_MEAN}
+        std: ${constants.PHC_STD}
+  target_transform:
+    _target_: torchvision.transforms.Resize
+    size: [512, 512]
