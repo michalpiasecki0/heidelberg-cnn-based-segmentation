@@ -1,0 +1,18 @@
+_target_: src.unet_lightning.UNetSegmentationModule
+
+learning_rate: 0.001
+
+loss_weights:
+  _target_: src.constants.LossWeights
+  cross_entropy: 1.0
+  dice: 1.0
+
+model_kwargs:
+  input_dim: 1
+  output_dim: 1
+  hidden_dims: [64, 128, 256, 512, 1024]
+  kernel_size: 3
+  padding_mode: "same"
+  skip_mode: "concat"
+  upsampling_mode: "transpose"
+  dropout: 0

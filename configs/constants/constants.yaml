@@ -1,0 +1,3 @@
+FLUO_PATH: datasets/Fluo-N2DL-HeLa
+FLUO_MEAN: 33203.0
+FLUO_STD: 305.0
