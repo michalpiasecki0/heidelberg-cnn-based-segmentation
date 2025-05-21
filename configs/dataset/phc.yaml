@@ -10,11 +10,11 @@ train:
     _target_: torchvision.transforms.Compose
     transforms:
       - _target_: torchvision.transforms.ToTensor
-      - _target_: torchvision.transforms.Resize
-        size: [512, 512]
       - _target_: torchvision.transforms.Normalize
         mean: ${constants.PHC_MEAN}
         std: ${constants.PHC_STD}
+      - _target_: torchvision.transforms.Resize
+        size: [512, 512]
   target_transform:
     _target_: torchvision.transforms.Resize
     size: [512, 512]
@@ -31,11 +31,11 @@ val:
     _target_: torchvision.transforms.Compose
     transforms:
       - _target_: torchvision.transforms.ToTensor
-      - _target_: torchvision.transforms.Resize
-        size: [512, 512]
       - _target_: torchvision.transforms.Normalize
         mean: ${constants.PHC_MEAN}
         std: ${constants.PHC_STD}
+      - _target_: torchvision.transforms.Resize
+        size: [512, 512]
   target_transform:
     _target_: torchvision.transforms.Resize
     size: [512, 512]
