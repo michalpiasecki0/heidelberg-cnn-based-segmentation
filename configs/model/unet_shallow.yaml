@@ -5,7 +5,7 @@ learning_rate: 0.001
 model_kwargs:
   input_dim: 1
   output_dim: 1
-  hidden_dims: [64, 128, 256, 512, 1024]
+  hidden_dims: [64, 128, 256]
   kernel_size: 3
   padding_mode: "same"
   skip_mode: "concat"

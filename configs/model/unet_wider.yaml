@@ -6,7 +6,7 @@ model_kwargs:
   input_dim: 1
   output_dim: 1
   hidden_dims: [64, 128, 256, 512, 1024]
-  kernel_size: 3
+  kernel_size: 7
   padding_mode: "same"
   skip_mode: "concat"
   upsampling_mode: "transpose"
