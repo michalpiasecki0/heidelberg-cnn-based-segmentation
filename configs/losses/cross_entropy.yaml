@@ -1,3 +1,0 @@
-  _target_: src.constants.LossWeights
-  cross_entropy: 1.0
-  dice: 0.0

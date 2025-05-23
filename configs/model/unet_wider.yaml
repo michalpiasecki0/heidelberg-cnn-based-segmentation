@@ -2,6 +2,11 @@ _target_: src.unet_lightning.UNetSegmentationModule
 
 learning_rate: 0.001
 
+loss_weights:
+  _target_: src.constants.LossWeights
+  cross_entropy: 1.0
+  dice: 1.0
+
 model_kwargs:
   input_dim: 1
   output_dim: 1
