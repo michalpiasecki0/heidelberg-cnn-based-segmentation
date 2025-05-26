@@ -47,9 +47,11 @@ class EncoderLayerBN(EncoderLayer):
             nn.Conv2d(ch_in, ch_out, kernel_size=kernel_size, padding=padding),
             nn.BatchNorm2d(ch_out),
             nn.ReLU(inplace=True),
+            nn.Dropout(dropout) if dropout > 0 else nn.Identity(),
             nn.Conv2d(ch_out, ch_out, kernel_size=kernel_size, padding=padding),
             nn.BatchNorm2d(ch_out),
             nn.ReLU(inplace=True),
+            nn.Dropout(dropout) if dropout > 0 else nn.Identity(),
         )
 
 
@@ -168,9 +170,11 @@ class DecoderLayerBN(DecoderLayer):
             nn.Conv2d(ch_hidden, ch_out, kernel_size=kernel_size, padding=padding),
             nn.BatchNorm2d(ch_out),
             nn.ReLU(inplace=True),
+            nn.Dropout(dropout) if dropout > 0 else nn.Identity(),
             nn.Conv2d(ch_out, ch_out, kernel_size=kernel_size, padding=padding),
             nn.BatchNorm2d(ch_out),
             nn.ReLU(inplace=True),
+            nn.Dropout(dropout) if dropout > 0 else nn.Identity(),
         )
 
 
@@ -215,7 +219,7 @@ class UNet2d(nn.Module):
                 kernel_size=kernel_size,
                 padding=padding,
                 pooling=False,
-                dropout=0,
+                dropout=dropout,
             )
         )
 
@@ -244,7 +248,7 @@ class UNet2d(nn.Module):
                 kernel_size=kernel_size,
                 padding=padding,
                 pooling=True,
-                dropout=0,
+                dropout=dropout,
             )
         )
         self.encoder = nn.ModuleList(encoder)
@@ -264,7 +268,7 @@ class UNet2d(nn.Module):
                     ch_out,
                     kernel_size=kernel_size,
                     padding=padding,
-                    dropout=0,
+                    dropout=dropout,
                     skip_mode=skip_mode,
                     upsampling_mode=upsampling_mode,
                     cropping=cropping,
