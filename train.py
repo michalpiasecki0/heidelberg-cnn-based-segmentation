@@ -18,9 +18,11 @@ def train(cfg: DictConfig) -> None:
     wand_logger = WandbLogger(
         project=cfg.tracker.project_name,
         name=cfg.tracker.task_name,
+        log_model=True,
         config=OmegaConf.to_container(cfg, resolve=True),
     )
-    trainer = pl.Trainer(max_epochs=cfg.max_epochs, logger=wand_logger)
+    trainer = pl.Trainer(max_epochs=cfg.max_epochs, 
+                         logger=wand_logger)
     trainer.fit(model_lt, train_dataloaders=dataloader, val_dataloaders=val_dataloader)
 
 

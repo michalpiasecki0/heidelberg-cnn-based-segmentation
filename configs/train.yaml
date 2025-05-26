@@ -5,4 +5,4 @@ defaults:
   - dataset: fluo
   - constants: constants
 batch_size: 8
-max_epochs: 3
+max_epochs: 30
