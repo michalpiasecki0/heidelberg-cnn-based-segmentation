@@ -6,6 +6,8 @@ train:
       - ${constants.PHC_PATH}
   img_folder: "01"
   target_folder: "01_ST/SEG"
+  patch_size: [512, 512]
+  stride: [256, 256]
   transform:
     _target_: torchvision.transforms.Compose
     transforms:
@@ -13,11 +15,6 @@ train:
       - _target_: torchvision.transforms.Normalize
         mean: ${constants.PHC_MEAN}
         std: ${constants.PHC_STD}
-      - _target_: torchvision.transforms.Resize
-        size: [512, 512]
-  target_transform:
-    _target_: torchvision.transforms.Resize
-    size: [512, 512]
 
 val:
   _target_: src.datasets.SegmentationDataset
@@ -27,6 +24,8 @@ val:
       - ${constants.PHC_PATH}
   img_folder: "02"
   target_folder: "02_ST/SEG"
+  patch_size: [512, 512]
+  stride: [256, 256]
   transform:
     _target_: torchvision.transforms.Compose
     transforms:
@@ -41,8 +40,3 @@ val:
       - _target_: torchvision.transforms.Normalize
         mean: ${constants.PHC_MEAN}
         std: ${constants.PHC_STD}
-      - _target_: torchvision.transforms.Resize
-        size: [512, 512]
-  target_transform:
-    _target_: torchvision.transforms.Resize
-    size: [512, 512]
