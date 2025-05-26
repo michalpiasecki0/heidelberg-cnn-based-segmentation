@@ -1,9 +1,8 @@
 defaults:
   - _self_
   - model: unet
-  - tracker: clearml
+  - tracker: wandb
   - dataset: fluo
   - constants: constants
-
-batch_size: 4
-max_epochs: 3
+batch_size: 8
+max_epochs: 30
